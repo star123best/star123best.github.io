@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Star | Developer</title>
+        <link rel="stylesheet" href="../css/contact.css" />
+
+        <script src=
+        "https://smtpjs.com/v3/smtp.js">
+      </script>
+     
+      <script type="text/javascript">
+        function sendEmail() {
+            const name_from_form = document.getElementById('name_form').value;
+            const email_from_form = document.getElementById('email_form').value;
+            const subject_form_form = document.getElementById('subject_form').value;
+            const message = document.getElementById('main_message_form').value;
+          if(name_from_form == ""){
+            document.getElementById('name_form').style.transition = "all 0.5s";
+            document.getElementById('name_form').style.borderBottomColor = "red";
+          }
+          if(email_from_form == ""){
+            document.getElementById('email_form').style.transition = "all 0.5s";
+            document.getElementById('email_form').style.borderBottomColor = "red";
+          }
+          if(subject_form_form == ""){
+            document.getElementById('subject_form').style.transition = "all 0.5s";
+            document.getElementById('subject_form').style.borderBottomColor = "red";
+          }
+          if(message == ""){
+            document.getElementById('main_message_form').style.transition = "all 0.5s";
+            document.getElementById('main_message_form').style.borderBottomColor = "red";
+          }
+          if(!name_from_form == "" && !email_from_form == "" && !subject_form_form == "" && !message == ""){
+            document.getElementById('name_form').value = ""
+            document.getElementById('email_form').value = ""
+            document.getElementById('subject_form').value = ""
+            document.getElementById('main_message_form').value = ""
+            document.getElementById('name_form').style.borderBottomColor = "#64c222";
+            document.getElementById('email_form').style.borderBottomColor = "#64c222";
+            document.getElementById('subject_form').style.borderBottomColor = "#64c222";
+            document.getElementById('main_message_form').style.borderBottomColor = "#64c222";
+            Email.send({
+            Host: "smtp.elasticemail.com",
+            Username: "star123bestwork@gmail.com",
+            Password: "80D9E9D84053FC44ACE8F903F5EAB393148B",
+            To: 'star123bestwork@gmail.com',
+            From: "matthew.sciberras800@gmail.com",
+            Subject: "Sent by " + email_from_form,
+            Body: message,
+          })
+            .then(function (message) {
+              const error_message = document.getElementById('error_text')
+              const sucsess_message = document.getElementById('sucsess_text')
+              error_message.style.visibility = "hidden"
+              sucsess_message.style.visibility = "visible"
+              setTimeout(() => {
+                sucsess_message.style.visibility = "hidden";
+                document.getElementById('name_form').style.borderBottomColor = "#494949";
+              document.getElementById('email_form').style.borderBottomColor = "#494949";
+              document.getElementById('subject_form').style.borderBottomColor = "#494949";
+              document.getElementById('main_message_form').style.borderBottomColor = "#494949";
+              }, 3000)
+            });
+          }
+          else{
+            const error_message = document.getElementById('error_text')
+            const sucsess_message = document.getElementById('sucsess_text')
+            sucsess_message.style.visibility = "hidden"
+            error_message.style.visibility = "visible"
+            setTimeout(() => {
+              error_message.style.visibility = "hidden";
+              document.getElementById('name_form').style.borderBottomColor = "#494949";
+              document.getElementById('email_form').style.borderBottomColor = "#494949";
+              document.getElementById('subject_form').style.borderBottomColor = "#494949";
+              document.getElementById('main_message_form').style.borderBottomColor = "#494949";
+            }, 3000)
+          }
+        }
+
+        function name_form_color(){
+          document.getElementById('name_form').style.transition = "all 0.5s";
+          document.getElementById('name_form').style.borderBottomColor = "#08fdd8";
+        }
+
+        function name_form_blur(){
+          document.getElementById('name_form').style.borderBottomColor = "#494949";
+        }
+
+        function email_form_color(){
+          document.getElementById('email_form').style.transition = "all 0.5s";
+          document.getElementById('email_form').style.borderBottomColor = "#08fdd8";
+        }
+        function email_form_blur(){
+          document.getElementById('email_form').style.borderBottomColor = "#494949";
+        }
+
+        function subject_form_color(){
+          document.getElementById('subject_form').style.transition = "all 0.5s";
+          document.getElementById('subject_form').style.borderBottomColor = "#08fdd8";
+        }
+        function subject_form_blur(){
+          document.getElementById('subject_form').style.borderBottomColor = "#494949";
+        }
+
+        function message_form_color(){
+          document.getElementById('main_message_form').style.transition = "all 0.5s";
+          document.getElementById('main_message_form').style.borderBottomColor = "#08fdd8";
+        }
+        function message_form_blur(){
+          document.getElementById('main_message_form').style.borderBottomColor = "#494949";
+        }
+
+        
+      </script>
+    </head>
+
+    <body>
+        <div class="sidebar">
+            <div class="top">
+                <h1 id="name_top"">Star</h1>
+                <p id="skill_top">Programmer</p>
+            </div>
+            <div class="buttons">
+                <hr color="#282828">
+                <a href="about.html" style="text-decoration:none" id="about_href">About</a>
+                <hr color="#282828">
+                <a  href="skills.html" style="text-decoration:none" id="skills_href">Skills</a>
+                <hr color="#282828">
+                <a href="past_work.html" style="text-decoration:none" id="past_work_href">Past work</a>
+                <hr color="#282828">
+                <a href="contact.html" style="text-decoration:none" id="contact_href">Contact</a>
+                <hr color="#282828">
+            </div>
+        </div>
+
+        <h1 id="title">Contact Me!</h1>
+        <p id="text_before_form">Wish to hire me for a commission? Even just ask a question? Don't hestitate to shoot an email.</p>
+        <div class="main">
+            <form method="post">
+                <input type="text" placeholder="Full name" id="name_form" required="true" onclick="name_form_color()" onblur="name_form_blur()" autocomplete="off">
+                <input type="text" placeholder="Email" id="email_form" required="true" onclick="email_form_color()" onblur="email_form_blur()" autocomplete="off">
+                <br>
+                <input type="text" placeholder="Subject" id="subject_form" required="true" onclick="subject_form_color()" onblur="subject_form_blur()" autocomplete="off">
+                <br>
+                <textarea placeholder="Message" id="main_message_form" required="true" onclick="message_form_color()" onblur="message_form_blur()" autocomplete="off"></textarea>
+                <!--<input type="button" value="Send Email"
+                    onclick="sendEmail()" /> !-->
+
+                <a id="send_message" href="javascript:;" onclick="sendEmail()">Send Message!</a>
+              </form>
+        </div>
+
+        <div class="response">
+            <p id="error_text">Please fill in the required fields.</p>
+            <p id="sucsess_text">Sucsess! Your email will be read soon.</p>
+        </div>
+    </body>
+</html>
